@@ -1,0 +1,33 @@
+import re
+
+# Mapping bettween the 1-10 reviews to scaled values
+REVIEW_TO_VALUE = {
+    "1": -10,
+    "2": -9,
+    "3": -4,
+    "4": -2,
+    "5": 0,
+    "6": 1,
+    "7": 3,
+    "8": 7,
+    "9": 9,
+    "10": 10,
+    
+    }
+
+
+def compute_likeability(building_information, building_review):
+    # Normalize the words
+    building_information = building_information.lower()
+    word_set = _create_word_set(building_information)
+    return {
+        word: REVIEW_TO_VALUE[building_review] 
+        for word in word_set
+        }
+
+def _create_word_set(info):
+    # Break the information into a set of unique words
+    word_list =  re.split(r"[ ,;!?]+", info)
+    return set(word_list)
+
+    

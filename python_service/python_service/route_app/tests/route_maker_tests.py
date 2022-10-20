@@ -1,6 +1,7 @@
 from django.test import TestCase
 from route_app.domain.queries.route_maker import compute_likeability
 from route_app.domain.queries.route_maker import merge_likeability_dicts
+from route_app.domain.queries.route_maker import compute_likeability_new_building
 
 
 class RouteMakerTests(TestCase):
@@ -64,3 +65,24 @@ class RouteMakerTests(TestCase):
             "one": -1,
         }
         self.assertEqual(expected_merged_likeability,merged_likeability)
+
+    def test_compute_likeability_new_building(self):
+        likability_review_1 = compute_likeability(
+            self.building_1["information"], self.review_1["review"]
+        )
+        likability_review_2 = compute_likeability(
+            self.building_1["information"], self.review_2["review"]
+        )
+        likability_review_3 = compute_likeability(
+            self.building_1["information"], self.review_3["review"]
+        )
+        merged_likeability = merge_likeability_dicts(
+            [likability_review_1, likability_review_2, likability_review_3]
+        )
+        self.assertEqual(
+            -2,
+            compute_likeability_new_building(
+                self.building_2["information"], merged_likeability
+            )
+        )
+        

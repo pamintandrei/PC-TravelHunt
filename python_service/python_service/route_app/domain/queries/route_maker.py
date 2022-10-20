@@ -25,6 +25,15 @@ def compute_likeability(building_information, building_review):
         for word in word_set
         }
 
+def merge_likeability_dicts(list_of_likeability_dicts):
+    initial_dict = list_of_likeability_dicts.pop(0)
+    for iterative_dict in list_of_likeability_dicts:
+        initial_dict = {
+            key: initial_dict.get(key,0) + iterative_dict.get(key,0)
+            for key in set(initial_dict).union(iterative_dict)
+        }
+    return initial_dict
+
 def _create_word_set(info):
     # Break the information into a set of unique words
     word_list =  re.split(r"[ ,;!?]+", info)

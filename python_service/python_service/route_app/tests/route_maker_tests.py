@@ -14,6 +14,13 @@ class RouteMakerTests(TestCase):
             # are using after we decide how to handle it
             "location": "TBD",
         }
+        self.building_2 = {
+            "id": 1,
+            "information": "This building",
+            #TODO (andreipamint) Change test to support the location system we
+            # are using after we decide how to handle it
+            "location": "TBD",
+        }
         self.review_1 = {
             "username": "Hiparh",
             "review" : "3",

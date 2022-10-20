@@ -37,8 +37,8 @@ def compute_likeability_new_building(
         building_information, prev_likeability_dict
 ):
     word_set = _preprocess_information(building_information)
-    word_set_union = set(word_set).union(prev_likeability_dict)
-    return sum(word_set_union)
+    word_set_intersect = set(word_set).intersection(prev_likeability_dict)
+    return sum([prev_likeability_dict[key] for key in word_set_intersect])
 
 def _create_word_set(info):
     # Break the information into a set of unique words

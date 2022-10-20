@@ -1,5 +1,6 @@
 from django.test import TestCase
 from route_app.domain.queries.route_maker import compute_likeability
+from route_app.domain.queries.route_maker import merge_likeability_dicts
 
 
 class RouteMakerTests(TestCase):
@@ -39,5 +40,27 @@ class RouteMakerTests(TestCase):
         self.assertEqual(-4, likability_review_1["this"])
         # There are 7 unique words
         self.assertEqual (7, len(likability_review_1))
-        
-        
+    
+    def test_merge_likeability(self):
+        likability_review_1 = compute_likeability(
+            self.building_1["information"], self.review_1["review"]
+        )
+        likability_review_2 = compute_likeability(
+            self.building_1["information"], self.review_2["review"]
+        )
+        likability_review_3 = compute_likeability(
+            self.building_1["information"], self.review_3["review"]
+        )
+        merged_likeability = merge_likeability_dicts(
+            [likability_review_1, likability_review_2, likability_review_3]
+        )
+        expected_merged_likeability = {
+            "this" : -1,
+            "building": -1,
+            "is": -1,
+            "a": -1,
+            "the": -1,
+            "best": -1,
+            "one": -1,
+        }
+        self.assertEqual(expected_merged_likeability,merged_likeability)

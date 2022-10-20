@@ -34,6 +34,18 @@ def merge_likeability_dicts(list_of_likeability_dicts):
         }
     return initial_dict
 
+def compute_likeability_new_building(
+        building_information, prev_likeability_dict
+):
+    word_set = _preprocess_information(building_information)
+    word_set_intersect = word_set.intersection(prev_likeability_dict)
+    return sum(
+        [
+            prev_likeability_dict[intersect_keys]
+            for intersect_keys in word_set_intersect
+        ]
+    )
+
 def _create_word_set(info):
     # Break the information into a set of unique words
     word_list =  re.split(r"[ ,;!?]+", info)

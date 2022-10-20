@@ -18,8 +18,7 @@ REVIEW_TO_VALUE = {
 
 def compute_likeability(building_information, building_review):
     # Normalize the words
-    building_information = building_information.lower()
-    word_set = _create_word_set(building_information)
+    word_set = _preprocess_information(building_information)
     return {
         word: REVIEW_TO_VALUE[building_review] 
         for word in word_set
@@ -38,17 +37,14 @@ def compute_likeability_new_building(
         building_information, prev_likeability_dict
 ):
     word_set = _preprocess_information(building_information)
-    word_set_intersect = word_set.intersection(prev_likeability_dict)
-    return sum(
-        [
-            prev_likeability_dict[intersect_keys]
-            for intersect_keys in word_set_intersect
-        ]
-    )
+    word_set_union = set(word_set).union(prev_likeability_dict)
+    return sum(word_set_union)
 
 def _create_word_set(info):
     # Break the information into a set of unique words
     word_list =  re.split(r"[ ,;!?]+", info)
     return set(word_list)
 
-    
+def _preprocess_information(info):
+    info = info.lower()
+    return _create_word_set(info)

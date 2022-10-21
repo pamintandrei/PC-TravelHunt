@@ -2,21 +2,30 @@ from django.test import TestCase
 from route_app.domain.queries.route_maker import compute_likeability
 from route_app.domain.queries.route_maker import merge_likeability_dicts
 from route_app.domain.queries.route_maker import compute_likeability_new_building
+from route_app.domain.queries.route_maker import bulk_compute_likeability_new_building
+from route_app.domain.queries.route_maker import bulk_compute_likeability
 
 
 class RouteMakerTests(TestCase):
     def setUp(self):
         super().setUp()
         self.building_1 = {
-            "id": 1,
+            "id": "1",
             "information": "This building is a building the best one, a;is!this",
             #TODO (andreipamint) Change test to support the location system we
             # are using after we decide how to handle it
             "location": "TBD",
         }
         self.building_2 = {
-            "id": 1,
+            "id": "2",
             "information": "This building",
+            #TODO (andreipamint) Change test to support the location system we
+            # are using after we decide how to handle it
+            "location": "TBD",
+        }
+        self.building_3 = {
+            "id": "3",
+            "information": "building",
             #TODO (andreipamint) Change test to support the location system we
             # are using after we decide how to handle it
             "location": "TBD",
@@ -35,6 +44,16 @@ class RouteMakerTests(TestCase):
             "username": "Hiparh but passed ED",
             "review" : "5",
             "building_id" : "1",
+        }
+        self.review_4 = {
+            "username": "Hiparh but passed ED",
+            "review" : "3",
+            "building_id" : "1",
+        }
+        self.review_5 = {
+            "username": "Hiparh but passed ED",
+            "review" : "10",
+            "building_id" : "2",
         }
         
 
@@ -92,4 +111,26 @@ class RouteMakerTests(TestCase):
                 self.building_2["information"], merged_likeability
             )
         )
+        
+    def test_buld_compute_likeability_new_building(self):
+        review_list = [self.review_4,self.review_5]
+        building_list = [self.building_1,self.building_2,self.building_3]
+        expected_merged_likeability = {
+            "this" : 6,
+            "building": 6,
+            "is": -4,
+            "a": -4,
+            "the": -4,
+            "best": -4,
+            "one": -4,
+        }
+        self.assertEqual(expected_merged_likeability,bulk_compute_likeability(building_list,review_list))
+        expected_likeability = {
+            "3": 6
+        }
+        self.assertEqual(expected_likeability,bulk_compute_likeability_new_building(building_list,review_list))
+        building_list = [self.building_1,self.building_2]
+        self.assertEqual({},bulk_compute_likeability_new_building(building_list,review_list))
+        building_list = [self.building_3]
+        self.assertEqual({"3": 0},bulk_compute_likeability_new_building(building_list,review_list))
         

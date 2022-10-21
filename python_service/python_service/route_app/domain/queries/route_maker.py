@@ -15,6 +15,46 @@ REVIEW_TO_VALUE = {
     
     }
 
+def bulk_compute_likeability(buildings, reviews):
+    mapping_building_id_info = {
+        building["id"]: building["information"]
+        for building in buildings
+    }
+    mapping_review_id_number = {
+        review["building_id"]: review["review"]
+        for review in reviews
+    }
+    likeability_dictionaries = [
+        compute_likeability(
+            mapping_building_id_info.get(building_id, ""),
+            mapping_review_id_number.get(building_id)
+        )
+        for building_id in mapping_review_id_number
+    ]
+    merged_likeability = merge_likeability_dicts(likeability_dictionaries)
+    return merged_likeability
+
+def bulk_compute_likeability_new_building(buildings, reviews):
+    mapping_building_id_info = {
+        building["id"]: building["information"]
+        for building in buildings
+    }
+    mapping_review_id_number = {
+        review["building_id"]: review["review"]
+        for review in reviews
+    }
+    unreviewd_buildings = {
+        building:mapping_building_id_info[building]
+        for building in mapping_building_id_info
+        if building not in mapping_review_id_number
+    }
+    merged_likeability = bulk_compute_likeability(buildings, reviews)
+    return {
+        building_id: compute_likeability_new_building(
+            unreviewd_buildings[building_id], merged_likeability
+        )
+        for building_id in unreviewd_buildings
+    }                 
 
 def compute_likeability(building_information, building_review):
     # Normalize the words

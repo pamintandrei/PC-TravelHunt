@@ -11,10 +11,7 @@
             "preLaunchTask": "npm: tsc",
             "program": "${workspaceFolder}/dist/app.js",
             "localRoot": "${workspaceFolder}/",
-            "remoteRoot": "${workspaceFolder}/",
-            "args": [
-                "${workspaceFolder}/analyser-config/avl_electrolyte_providenta.json"
-            ]
+            "remoteRoot": "${workspaceFolder}/"
         }
     ]
 }

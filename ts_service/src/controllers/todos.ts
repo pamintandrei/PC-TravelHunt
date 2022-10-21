@@ -3,6 +3,9 @@ import { RequestHandler } from 'express';
 import { Todo } from '../models/todo';
 
 import fetch from 'node-fetch'; 
+
+import qrCode from 'qrcode';
+
 //exemplu TO DO controllers
 
 const TODOS: Todo[] = [];
@@ -31,7 +34,13 @@ export const createTodo: RequestHandler = (req, res, next) => {
 export const getTodos: RequestHandler = async (req, res, next) => {
   //req.query
   // const body = await getceva('');
-  res.json({da: "QRCODE"});  //res.status(200).send(body);
+  //request catre cladiri
+  qrCode.toDataURL('SIUUUUUUUUUUUUUUUUUUUUUUUUU', { version: 10 }, function (err:any, url:any) {
+    if (err) console.error(err);
+    console.log(url);
+    res.json(url);
+  })
+ //res.status(200).send(body);
 };
 
 export const updateTodo: RequestHandler<{ id: string }> = (req, res, next) => {

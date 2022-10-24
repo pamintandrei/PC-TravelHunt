@@ -1,5 +1,6 @@
 package com.example.travel_hunt.service.implementation;
 
+import com.example.travel_hunt.configuration.jwt.AuthTokenFilter;
 import com.example.travel_hunt.configuration.jwt.JwtUtils;
 import com.example.travel_hunt.model.User;
 import com.example.travel_hunt.service.LoginService;
@@ -25,7 +26,7 @@ public class LoginServiceImpl implements LoginService {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(username, password));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return jwtUtils.generateJwtToken(authentication);
+        return AuthTokenFilter.BEARER + " " + jwtUtils.generateJwtToken(authentication);
     }
 
     @Override

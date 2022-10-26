@@ -43,6 +43,22 @@ export const getTodos: RequestHandler = async (req, res, next) => {
  //res.status(200).send(body);
 };
 
+
+export const getBuilding: RequestHandler = async (req, res, next) => {
+  const body = {Bundle: [{
+    "id": 1,
+    "information": "Useless Informations ...",
+    "location": "Manastur"
+  },
+  {
+    "id": 2,
+    "information": "Useless Informations2 ...",
+    "location": "Baciu"
+  }]
+}
+  res.status(200).send(body);
+};
+
 export const updateTodo: RequestHandler<{ id: string }> = (req, res, next) => {
   const todoId = req.params.id;
 

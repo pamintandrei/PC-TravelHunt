@@ -1,12 +1,14 @@
 import { Router } from 'express';
 
-import { createTodo, getTodos, updateTodo, deleteTodo } from '../controllers/todos';
+import { getFromDataBase, createTodo, getTodos, updateTodo, deleteTodo } from '../controllers/todos';
 
 const router = Router();
 
 router.post('/', createTodo);
 
 router.get('/', getTodos);
+
+router.get('/Database/', getFromDataBase);
 
 router.patch('/:id', updateTodo);
 

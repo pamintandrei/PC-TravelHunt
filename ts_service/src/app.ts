@@ -1,26 +1,9 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { json } from 'body-parser';
 import { init } from './mssql/index'
-//import { config } from '../config'
+import { loadAppConfig } from './utils/utils';
 
-const config = {
-  "database_config": {
-      "user": "user",
-      "password": "user",
-      "server": "localhost",
-      "database": "flashscore",
-      "requestTimeout": 150000,
-      "options": {
-          "trustServerCertificate": true
-      },
-      "pool": {
-          "max": 10,
-          "min": 0,
-          "idleTimeoutMillis": 30000
-      }
-  },
-  "port": 3000
-}
+const config = loadAppConfig("config.json");
 
 import routes from './routes/todos';
 

@@ -66,3 +66,18 @@ export const deleteTodo: RequestHandler = (req, res, next) => {
 
   res.json({ message: 'Todo deleted!' });
 };
+
+export const getBuilding: RequestHandler = async (req, res, next) => {
+  const body = {Bundle: [{
+    "id": 1,
+    "information": "Useless Informations ...",
+    "location": "Manastur"
+  },
+  {
+    "id": 2,
+    "information": "Useless Informations2 ...",
+    "location": "Baciu"
+  }]
+}
+  res.status(200).send(body);
+};

@@ -6,6 +6,8 @@ import fetch from 'node-fetch';
 
 import qrCode from 'qrcode';
 
+import {getConnectionPool, getRequest} from '../mssql'
+
 //exemplu TO DO controllers
 
 const TODOS: Todo[] = [];
@@ -43,6 +45,13 @@ export const getTodos: RequestHandler = async (req, res, next) => {
  //res.status(200).send(body);
 };
 
+export const getFromDataBase: RequestHandler = async (req, res, next) => {
+  const response = await getRequest()
+      .query('select * from teams');
+  response.recordset[0];
+  res.status(200).send(response.recordset);
+};
+
 export const updateTodo: RequestHandler<{ id: string }> = (req, res, next) => {
   const todoId = req.params.id;
 
@@ -56,4 +65,19 @@ export const deleteTodo: RequestHandler = (req, res, next) => {
   const todoId = req.params.id;
 
   res.json({ message: 'Todo deleted!' });
+};
+
+export const getBuilding: RequestHandler = async (req, res, next) => {
+  const body = {Bundle: [{
+    "id": 1,
+    "information": "Useless Informations ...",
+    "location": "Manastur"
+  },
+  {
+    "id": 2,
+    "information": "Useless Informations2 ...",
+    "location": "Baciu"
+  }]
+}
+  res.status(200).send(body);
 };

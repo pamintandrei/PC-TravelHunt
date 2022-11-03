@@ -1,0 +1,7 @@
+bld_name = Old Trafford2
+bld_location = Manchester2
+x_coordinate = 22
+y_coordinate = 32
+bld_description = siuuu2
+bld_image = stadion2
+tags = smecher2

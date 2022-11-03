@@ -7,7 +7,8 @@
     "test": "ts-mocha src/tests/*.spec.ts",
     "start": "nodemon dist/app.js",
     "tsc": "tsc",
-    "update_database": "nodemon dist/scripts/index.js"
+    "update_database": "nodemon dist/scripts/index.js",
+    "add": "node dist/addForm/index.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,12 +1,16 @@
 import Header from "./header/Header";
 import './App.css'
 import Slidebar from "./slidebar/Slidebar";
+import Map from "./map/Map";
 
 function App() {
   return (
-    <div>
+    <div style={{width: '100%'}}>
         <Header/>
-        <Slidebar/>
+        <div style={{display: 'flex'}}>
+            <Slidebar/>
+            <Map/>
+        </div>
     </div>
   );
 }

@@ -1,18 +1,18 @@
 import { Router } from 'express';
 
-import { getFromDataBase, createTodo, getTodos, updateTodo, deleteTodo, getBuilding } from '../controllers/todos';
+import { getFromDataBase, createBuilding, getTodos, updateBuilding, deleteBuilding, getBuilding } from '../controllers/todos';
 
 const router = Router();
 
-router.post('/', createTodo);
+router.post('/Building/', createBuilding);
 
 router.get('/', getTodos);
 
 router.get('/Database/', getFromDataBase);
 
-router.patch('/:id', updateTodo);
+router.patch('/Building/:id', updateBuilding);
 
-router.delete('/:id', deleteTodo);
+router.delete('/Building/:id', deleteBuilding);
 
 router.get('/Building/', getBuilding);
 

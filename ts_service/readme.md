@@ -1,4 +1,4 @@
-# Flashscore IW Backend
+# TravelHunt
 
 ## Database setup
 

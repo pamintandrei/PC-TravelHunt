@@ -18,3 +18,9 @@ def fetch_json(*args, **kwargs):
     data = get(*args, **kwargs)
     # Support APIs that return nothing on success
     return data.json() if data.content != b"" else None
+
+
+def fetch_buildings_reviews():
+    buildings = fetch_json("http://127.0.0.1:8000/buildings")
+    reviews = fetch_json("http://127.0.0.1:8000/reviews")
+    return buildings, reviews

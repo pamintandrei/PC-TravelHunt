@@ -42,10 +42,10 @@ GO
 ALTER SERVER ROLE [bulkadmin] ADD MEMBER [user]
 GO
 
-CREATE DATABASE flashscore
+CREATE DATABASE travelhunt
 GO
 
-USE flashscore
+USE travelhunt
 GO
 
 CREATE TABLE example(

@@ -1,4 +1,5 @@
 import { FormParser } from "./parser/FormParser";
+import fetch from 'node-fetch';
 import { existsSync, readdirSync, readFileSync } from 'fs';
 
 const directoryPath = "upload"

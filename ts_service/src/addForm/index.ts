@@ -10,7 +10,7 @@ async function runAdd() {
 
   for (let fileName of fileNames) {
     const details = parser.parseFile(fileName);
-    const url = "localhost:3000/Building"
+    const url = "http://localhost:3000/Building"
     const response = await fetch(url, {
       method: 'post',
       body: JSON.stringify(details),

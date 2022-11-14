@@ -21,7 +21,7 @@ def bulk_compute_likeability(buildings, reviews):
         for building in buildings
     }
     mapping_review_id_number = {
-        review["building_id"]: review["review"]
+        review["buildingId"]: str(review["stars"])
         for review in reviews
     }
     likeability_dictionaries = [
@@ -40,7 +40,7 @@ def bulk_compute_likeability_new_building(buildings, reviews):
         for building in buildings
     }
     mapping_review_id_number = {
-        review["building_id"]: review["review"]
+        review["buildingId"]: str(review["stars"])
         for review in reviews
     }
     unreviewd_buildings = {

@@ -4,25 +4,13 @@ export default function Slidebar() {
     return (
         <div id='scrollbar'>
             <div className='scrollbar-button'>
-                Your list of tourism atractions
+                Profile
             </div>
             <div className='scrollbar-button'>
-                Your list of tourism atractions
+                Your list of tourism attractions
             </div>
             <div className='scrollbar-button'>
-                Your list of tourism atractions
-            </div>
-            <div className='scrollbar-button'>
-                Your list of tourism atractions
-            </div>
-            <div className='scrollbar-button'>
-                Your list of tourism atractions
-            </div>
-            <div className='scrollbar-button'>
-                Your list of tourism atractions
-            </div>
-            <div className='scrollbar-button'>
-                Your list of tourism atractions
+                Calculate shortest route
             </div>
 
         </div>

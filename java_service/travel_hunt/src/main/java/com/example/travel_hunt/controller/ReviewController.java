@@ -40,4 +40,11 @@ public class ReviewController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/owner")
+    public List<ReviewDto> findReviewsByUsername(@RequestParam String username) {
+        return reviewService.findReviewsByUsername(username)
+                .stream()
+                .map(ReviewMapper::reviewToDto)
+                .collect(Collectors.toList());
+    }
 }

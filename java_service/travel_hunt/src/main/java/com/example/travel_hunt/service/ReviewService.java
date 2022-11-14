@@ -10,4 +10,6 @@ public interface ReviewService {
     Review saveReview(Review review);
 
     List<Review> findAllReviews();
+
+    List<Review> findReviewsByUsername(String username);
 }

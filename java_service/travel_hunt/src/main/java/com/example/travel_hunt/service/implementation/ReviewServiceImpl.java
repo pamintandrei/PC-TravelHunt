@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +34,13 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<Review> findAllReviews() {
         return reviewRepository.findAll();
+    }
+
+    @Override
+    public List<Review> findReviewsByUsername(String username) {
+        return reviewRepository.findAll()
+                .stream()
+                .filter(review -> review.getUser().getUsername().equals(username))
+                .collect(Collectors.toList());
     }
 }

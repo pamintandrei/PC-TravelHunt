@@ -4,10 +4,10 @@ from route_app.domain.queries.get_requests import fetch_buildings_reviews
 from route_app.domain.queries.route_maker import compute_likeability
 from route_app.domain.queries.route_maker import bulk_compute_likeability_new_building
 
-SUGGESTED_BUILDINGS = 1
+SUGGESTED_BUILDINGS = 3
 
 def route_maker_endpoint(request):
-    buildings, reviews = fetch_buildings_reviews()
+    buildings, reviews = fetch_buildings_reviews(request.GET["username"])
     likeability = bulk_compute_likeability_new_building(buildings,reviews)
     buildings_id = []
     for i in range(SUGGESTED_BUILDINGS):

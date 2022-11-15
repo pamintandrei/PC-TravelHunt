@@ -7,18 +7,21 @@ export default function Map() {
     const mockBuildings = [
         {id: 3, name: 'Cluj Arena', location: 'Aleea Stadionului, nr. 2'},
         {id: 4, name: 'Palatul Bánffy', location: 'str. Piața Unirii nr. 30'},
+        {id: 5, name: 'Cluj Arena', location: 'Aleea Stadionului, nr. 2'},
+        {id: 6, name: 'Palatul Bánffy', location: 'str. Piața Unirii nr. 30'},
+        
     ]
     useEffect(() => {
         
     }, [])
 
     const generateRoute = () => {
-        axios.get('http://127.0.0.1:8000/buildings').then((response) => {
-            response.header("Access-Control-Allow-Origin", "*");
-            console.log(response)
-        }).catch((err) => {
-            console.log(err)
-        })
+        // axios.get('http://127.0.0.1:8000/buildings').then((response) => {
+        //     response.header("Access-Control-Allow-Origin", "*");
+        //     console.log(response)
+        // }).catch((err) => {
+        //     console.log(err)
+        // })
     }
 
     return (

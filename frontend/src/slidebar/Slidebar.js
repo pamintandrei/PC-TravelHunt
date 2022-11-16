@@ -1,18 +1,20 @@
 import './Slidebar.css'
+import { generateOrderList } from '../store/buildingVisitingOrderList/buildingVisitingOrderList';
+import { useDispatch } from 'react-redux'
 
 export default function Slidebar() {
+    const dispatch = useDispatch();
+   
+    const generateRoute = () => {
+        // debugger
+        // dispatch(generateOrderList([]))
+    }
+
     return (
         <div id='scrollbar'>
-            <div className='scrollbar-button'>
-                Profile
+            <div className='scrollbar-button'  onClick={generateRoute}>
+                Generate route
             </div>
-            <div className='scrollbar-button'>
-                Your list of tourism attractions
-            </div>
-            <div className='scrollbar-button'>
-                Calculate shortest route
-            </div>
-
         </div>
     )
 }

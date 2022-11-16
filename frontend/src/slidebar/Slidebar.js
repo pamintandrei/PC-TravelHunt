@@ -1,23 +1,18 @@
 import './Slidebar.css'
-import routeService from '../services/routeService'
-import axios from 'axios';
+import { generateOrderList } from '../store/buildingVisitingOrderList/buildingVisitingOrderList';
+import { useDispatch } from 'react-redux'
 
 export default function Slidebar() {
-    const config = {
-        headers:{
-          'Access-Control-Allow-Origin': '*',
-        }
-      };
+    const dispatch = useDispatch();
+   
     const generateRoute = () => {
-        return axios.get('http://127.0.0.1:8000/route?username=mihainan', config).then((response) => {
-            console.log(response)
-        }).catch((err) => {
-            console.log(err)
-        })
+        // debugger
+        // dispatch(generateOrderList([]))
     }
+
     return (
         <div id='scrollbar'>
-            <div className='scrollbar-button' onClick={generateRoute}>
+            <div className='scrollbar-button'  onClick={generateRoute}>
                 Generate route
             </div>
         </div>

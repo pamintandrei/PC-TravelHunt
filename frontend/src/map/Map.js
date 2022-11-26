@@ -5,6 +5,13 @@ import axios from 'axios';
 import Building from '../components/Building'
 import { useSelector } from 'react-redux';
 
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
 
 export default function Map() {
     const [buildingIdsInOrder, setBuildingsIdsInOrder] = useState([]) // ex: [5,3,8,2]
@@ -18,11 +25,10 @@ export default function Map() {
     // ]
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/route?username=mihainan').then((response) => {
-            setBuildingsIdsInOrder(response)
-        }).catch((err) => {
-            console.log(err)
-        })
+        let response=httpGet("http://127.0.0.1:8000/route?username=mihainan")
+        var array = JSON.parse(response)
+        setBuildingsIdsInOrder(array)
+
     }, [])
 
     const generateRoute = () => {
@@ -35,7 +41,7 @@ export default function Map() {
             <button style= {{position: 'absolute', top: '0', left: '0', padding: '40px 40px'}} onClick={generateRoute}>
                 Generate route
             </button>
-            {buildingIdsInOrder?.map((buildingId, index) => (
+            {buildingIdsInOrder.map((buildingId, index) => (
                 <Building buildingId={buildingId} buildingOrder={buildingVisitingOrderList[index + 1]}/>
             ))}
         </div>

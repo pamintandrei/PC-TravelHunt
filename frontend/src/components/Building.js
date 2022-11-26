@@ -6,6 +6,7 @@ export default function Building({buildingId, buildingOrder}) {
     const [buildingVisible, setBuildingVisible] = useState(false)
 
     useState(() => {
+        console.log(buildingId)
         random1=Math.floor(Math.random() * 770);
         random2=Math.floor(Math.random() * 1480); 
     },[])

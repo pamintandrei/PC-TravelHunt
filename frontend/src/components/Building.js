@@ -17,7 +17,13 @@ export default function Building({buildingId, buildingOrder}) {
                {buildingOrder && <span className='building-span'> {buildingOrder} </span>}
             </div>
             {buildingVisible && 
-                <img src={require(`../assets/images/${buildingId}.jpg`)} alt='building' width="100" height="100" style={{borderRadius: '500px', border: '3px solid black'}}/>
+                <div className='building-info-container'>
+                    <img src={require(`../assets/images/${buildingId}.jpg`)} alt='building' width="100" height="100"
+                     style={{borderRadius: '20px' }}/>
+                    <div className='building-info'>
+                        asdasdasd
+                    </div>
+                </div>
             }
         </div>
     )

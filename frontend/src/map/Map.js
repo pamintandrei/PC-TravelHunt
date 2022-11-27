@@ -5,6 +5,13 @@ import axios from 'axios';
 import Building from '../components/Building'
 import { useSelector } from 'react-redux';
 
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
 
 export default function Map() {
     const [buildingIdsInOrder, setBuildingsIdsInOrder] = useState([3,7,9,15,18,19]) // ex: [5,3,8,2]
@@ -13,11 +20,10 @@ export default function Map() {
 
 
     useEffect(() => {
-        // axios.get('http://127.0.0.1:8000/route?username=mihainan').then((response) => {
-        //     setBuildingsIdsInOrder(response)
-        // }).catch((err) => {
-        //     console.log(err)
-        // })
+        let response=httpGet("http://127.0.0.1:8000/route?username=mihainan")
+        var array = JSON.parse(response)
+        setBuildingsIdsInOrder(array)
+
     }, [])
 
 

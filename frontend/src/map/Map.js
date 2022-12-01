@@ -31,7 +31,7 @@ export default function Map() {
         <div id='map'>
             <img src={Cluj_Map} alt={'Cluj Map'} width={'100%'} height={'100%'} style={{position: 'relative', top: '0', left: '0'}} />
             {buildingIdsInOrder.map((buildingId, index) => (
-                <Building key={buildingId} buildingId={buildingId} buildingOrder={buildingVisitingOrderList[index + 1]}/>
+                <Building key={buildingId} buildingId={buildingId} buildingOrder={buildingVisitingOrderList[index]}/>
             ))}
         </div>
     )

@@ -8,7 +8,7 @@ export const constants = {
         '6': {name: 'Palatul Teleki', top: 530, left: 720},
         '7': {name: 'Biserica Sfantul Mihail', top: 430, left: 590},
         '8': {name: 'Turnul Croitorilor', top: 525, left: 860},
-        '9': {name: 'Muzeul Farmaciei',top: 390, left: 600},
+        '9': {name: 'Muzeul Farmaciei', top: 380, left: 600},
         '10': {name: 'Palatul Szeki', top: 270, left: 520},
         '11': {name: 'Biserica Bob', top: 490, left: 530},
         '12': {name: 'Biserica Piaristilor', top: 540, left: 640},

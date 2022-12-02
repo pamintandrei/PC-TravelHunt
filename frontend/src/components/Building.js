@@ -2,10 +2,10 @@ import './Building.css'
 import {constants} from '../utils/constants'
 import {useEffect, useState} from 'react'
 
-export default function Building({buildingId, buildingOrder, buildingName}) {
+export default function Building({buildingId, buildingOrder}) {
     const [buildingVisible, setBuildingVisible] = useState(false)
 
-
+    //TODO nr. 9
     useEffect(() => {
         // debugger;
     }, [buildingVisible])

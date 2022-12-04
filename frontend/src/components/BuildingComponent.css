@@ -1,0 +1,19 @@
+.building-component{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    letter-spacing: 2px;
+    width: 500px;
+    height: 500px;
+    border: 2px solid #73a25f;
+    background-color: white;
+    z-index:10;
+}
+
+.building-component-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}

@@ -13,7 +13,7 @@ export const constants = {
         '11': {name: 'Biserica Bob', top: 490, left: 530},
         '12': {name: 'Biserica Piaristilor', top: 540, left: 640},
         '13': {name: 'Palatul Berde', top: 220, left: 540},
-        '14': {name: 'Cetatuia', top: 200, left: 300},
+        '14': {name: 'Cetatuia', description: 'Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum Cetatuia este lorem ipsum  ',top: 200, left: 300},
         '15': {name: 'Muzeul Etnografic al Transilvaniei', top: 480, left: 500},
         '16': {name: 'Opera Nationala Romana', top: 420, left: 850},
         '17': {name: 'Palatul Telefoanelor', top: 300, left: 540},

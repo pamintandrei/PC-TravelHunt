@@ -111,12 +111,12 @@ export const getBuilding: RequestHandler = async (req, res, next) => {
   body.entry = buldings.recordset.map((building) =>{
     return {
       resource: {
-        "id_building": building.id_building,
+        "id": building.id_building,
         "building name": building.bld_name,
-        "building location": building.bld_location,
+        "location": building.bld_location,
         "x_coordinate": building.x_coordinate,
         "y_coordinate": building.y_coordinate,
-        "building description":  building.bld_description,
+        "information":  building.bld_description,
         "image": building.bld_image,
         "tags": building.tags
     }

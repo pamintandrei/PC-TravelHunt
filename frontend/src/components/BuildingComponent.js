@@ -8,7 +8,7 @@ export default function BuildingComponent({buildingId}) {
                 <h2>{constants.buildingPositions[buildingId].name}</h2>
                 <img src={require(`../assets/images/${buildingId}.jpg`)} alt='building' width="450" height="300"
                      style={{borderRadius: '20px' }}/>
-                <div>
+                <div style={{letterSpacing: '1px'}}>
                     {constants.buildingPositions[buildingId].description}
                 </div>
             </div>

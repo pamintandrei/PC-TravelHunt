@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = TravelHuntApplication.class)
-public class EventServiceIntegrationTest {
+class EventServiceIntegrationTest {
     private static final String NAME = "Christmas Party";
     private static final String DESCRIPTION = "Coolest in town";
 

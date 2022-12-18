@@ -2,7 +2,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    background-image: linear-gradient( 0deg, #82a775 10%, #d1be9d 100%);
+    background: #d1be9d;
     height: 807px;
     padding: 0;
     width: 20%;
@@ -15,7 +15,7 @@
     justify-content: center;
     text-shadow: 1px 1px 1px #333;
     font-family: 'Dancing Script', cursive;
-    font-size: 16px;
+    font-size: 24px;
     padding:10px 20px;
     border:0;
     border-bottom: 2px solid #FFF;
@@ -23,5 +23,5 @@
 }
 
 .scrollbar-button:hover{
-    background-image: linear-gradient( to top, #82a775 10%, #d1be9d 100%);;
+    background: #bd935a;;
 }

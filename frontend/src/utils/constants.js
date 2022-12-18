@@ -18,13 +18,21 @@ export const constants = {
         '4': {name: 'Palatul Bánffy', description: 'Palatul Bánffy este un important edificiu baroc din Cluj-Napoca' +
                 ' (Piața Unirii nr. 30), construit în secolul XVIII, operă a arhitectului german Johann Eberhard ' +
                 'Blaumann. Găzduiește din 1951 Muzeul de Artă.', top: 410, left: 640},
-        '5': {name: 'Palatul de Justitie', top: 400, left: 910},
+        '5': {name: 'Palatul de Justitie', description: 'Palatul de Justiție din Cluj-Napoca, situat la intersecția ' +
+                'Pieței Ștefan cel Mare cu Calea Dorobanților, a fost construit în perioada 1898-1902 în stil eclectic. \n ' +
+                'Clădirea este parte a ansamblului arhitectonic din Piața Avram Iancu, ansamblu din care fac parte și' +
+                ' Opera Română, Teatrul Național, Palatul Regionalei Căilor Ferate, Palatul Prefecturii, Palatul de ' +
+                'Finanțe, Palatul Arhiepiscopiei Ortodoxe (fosta Direcție Silvică).',
+                top: 400, left: 910},
         '6': {name: 'Palatul Teleki', top: 530, left: 720},
         '7': {name: 'Biserica Sfantul Mihail', description: 'Biserica Romano-Catolică Sfântul Mihail (în maghiară' +
                 ' Kolozsvári Szent Mihály-templom, în germană Klausenburger Michaelskirche) este unul dintre cele mai ' +
                 'reprezentative monumente ale arhitecturii gotice din Transilvania. Edificiul a fost ridicat în Piața ' +
                 'Centrală din Cluj-Napoca și se numără printre monumentele emblematice ale orașului.', top: 430, left: 590},
-        '8': {name: 'Turnul Croitorilor', top: 525, left: 860},
+        '8': {name: 'Turnul Croitorilor', description: 'Bastionul Croitorilor (în maghiară Bethlen bástyája, alternativ' +
+                ' Szabók bástyája, în trad. „Bastionul Bethlen” sau „Bastionul Croitorilor”) este unul din puținele ' +
+                'turnuri de fortificație care au făcut parte din Vechea Cetate a Clujului și care s-a păstrat intact' +
+                ' până în zilele noastre. A fost finanțat de breasla croitorilor din Cluj.', top: 525, left: 860},
         '9': {name: 'Muzeul Farmaciei', top: 380, left: 600},
         '10': {name: 'Palatul Szeki', description: 'Palatul Széki este o clădire neogotică ridicată pe malul râului ' +
                 'Someș din Cluj în anul 1893 de farmacistul și profesorul universitar Miklós Széki. Adresa palatului' +
@@ -54,7 +62,10 @@ export const constants = {
                 ' 1922, fiind una dintre realizările culturale ale perioadei următoare Marii Uniri de la 1 decembrie ' +
                 '1918. Cu un secol de funcționare neîntreruptă, muzeul este cel mai vechi de acest gen din România și' +
                 ' unul dintre cele mai prestigioase din Europa.', top: 480, left: 500},
-        '16': {name: 'Opera Nationala Romana', top: 420, left: 850},
+        '16': {name: 'Opera Nationala Romana', description: 'Opera Națională Română Cluj-Napoca este o companie de' +
+                ' operă și balet înființată în anul 1919, instituție publică cu personalitate juridică aflată în ' +
+                'subordinea Ministerului Culturii și Cultelor din România. Compania activează în clădirea Teatrului ' +
+                'Național din Cluj.', top: 420, left: 850},
         '17': {name: 'Palatul Telefoanelor', description: 'Palatul Telefoanelor este una dintre clădirile reprezentative' +
                 ' pentru municipiul Cluj-Napoca (str. Octavian Petrovici nr. 2) și pentru stilul arhitectural al' +
                 ' sfârșitului deceniului 7 din secolul al XX-lea în România. Autor: arh. Vasile Mitrea, 1968.',

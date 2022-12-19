@@ -10,8 +10,13 @@ export default function BuildingComponent({buildingId}) {
         {reviewText: 'mi-a placut foarte mult ', stars: 5, user: {username: 'Ion'}},
         {reviewText: 'nu mi-a placut deloc ', stars: 1, user: {username: 'Alexandra'}}])
 
+    const [buildingReviews2, setBuildingReviews2] = useState([{reviewText: 'review test', stars: 5, user: {username: 'Cami'}},
+        {reviewText: 'review text test 3', stars: 1.5, user: {username: 'Ionut'}}])
+
+
     useEffect(() => {
         const init = async () => {
+            console.log(buildingId)
             //getReviewsForBuilding(buildingId)
         }
         init();
@@ -35,13 +40,21 @@ export default function BuildingComponent({buildingId}) {
                     {constants.buildingPositions[buildingId].description}
                 </div>
                 <div className='building-reviews'>
-                    {buildingReviews?.map((review) => (
+                    {buildingId === 14 ? buildingReviews?.map((review) => (
                         <div style={{display: 'flex', borderBottom: '2px solid red'}} >
                             <span style={{flex: '1'}}>{review.user.username}</span>
-                            <span style={{flex: '1'}}> {review.stars}/5 Stele</span>
+                            <span style={{flex: '1'}}> {review.stars}/5 ⭐</span>
                             <span style={{flex: '1'}}> {review.reviewText}</span>
                         </div>
-                    ))}
+                    )) :
+                        buildingReviews2?.map((review) => (
+                            <div style={{display: 'flex', borderBottom: '2px solid red'}} >
+                                <span style={{flex: '1'}}>{review.user.username}</span>
+                                <span style={{flex: '1'}}> {review.stars}/5 ⭐</span>
+                                <span style={{flex: '1'}}> {review.reviewText}</span>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
 

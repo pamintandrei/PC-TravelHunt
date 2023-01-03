@@ -15,8 +15,8 @@ def route_maker_endpoint(request):
         likeability.pop(buildings_id[-1])
     response = HttpResponse(json.dumps(buildings_id))
     response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type,Authorization"
-    response.headers["Access-Control-Allow-Methods"] = "GET,PUT,POST,DELETE,OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "*"
     print(response)
     return response
 

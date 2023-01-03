@@ -13,7 +13,18 @@ export default function Map() {
     useEffect(() => {
         // let response=service.get("http://127.0.0.1:8000/route?username=mihainan")
         // var array = JSON.parse(response)
+        // console.log(response)
         // setBuildingsIdsInOrder(array)
+        //{
+        //             headers: {
+        //                 method: 'GET',
+        //                 headers: {
+        //                     "Access-Control-Allow-Origin": "*"
+        //                 },
+        //             }
+        //         }
+        fetch('http://127.0.0.1:8000/route?username=mihainan').then(response => console.log(response))
+            .then(response => console.log(response))
 
     }, [])
 

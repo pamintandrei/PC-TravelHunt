@@ -1,10 +1,10 @@
 import './Slidebar.css'
-import { useDispatch } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { generateRoute, resetRoute } from '../store_features/orderSlice';
 
 export default function Slidebar() {
     const dispatch = useDispatch();
-   
+
     const generate = () => {
         dispatch(generateRoute())
     }

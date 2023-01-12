@@ -3,19 +3,26 @@ import { createSlice } from '@reduxjs/toolkit'
 export const orderSlice = createSlice({
     name: 'order',
     initialState: {
-      value: [],
+      value: {
+          array: [],
+          username: ''
+      },
     },
     reducers: {
       generateRoute: (state) => {
-        state.value = [...Array(7).keys()]
+        state.value.array = [...Array(7).keys()]
       },
 
       resetRoute: (state) => {
-        state.value = []
-      }
+        state.value.array = []
+      },
+
+      setCurrentUsername: (state, username) => {
+        state.value.username = username;
+      },
     },
   })
 
-  export const { generateRoute, resetRoute } = orderSlice.actions
+  export const { generateRoute, resetRoute, setCurrentUsername } = orderSlice.actions
 
   export default orderSlice.reducer

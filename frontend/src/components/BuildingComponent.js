@@ -13,6 +13,8 @@ export default function BuildingComponent({buildingId}) {
     const [buildingReviews2, setBuildingReviews2] = useState([{reviewText: 'review test', stars: 5, user: {username: 'Cami'}},
         {reviewText: 'review text test 3', stars: 1.5, user: {username: 'Ionut'}}])
 
+    const [reviewText, setReviewText] = useState(null)
+    const [nrOfStars, setNrOfStars] = useState(null)
 
     useEffect(() => {
         const init = async () => {
@@ -28,6 +30,14 @@ export default function BuildingComponent({buildingId}) {
         // let response=service.get("http://127.0.0.1:8000/route?username=mihainan")
         // var array = JSON.parse(response)
         // setBuildingsIdsInOrder(array)
+    }
+
+    const submitReview = () => {
+        if(nrOfStars<= 1 || nrOfStars > 5) {
+            alert("Number of stars must be between 1 and 5")
+            setNrOfStars('')
+        }
+        //send request to BE
     }
 
     return (
@@ -55,6 +65,11 @@ export default function BuildingComponent({buildingId}) {
                             </div>
                         ))
                     }
+                </div>
+                <div style={{display: 'flex', gap:'10px', width: '100%', height: '5%'}}>
+                    <input style={{width: '70%'}} placeholder='Write a review...' value={reviewText} onInput={(ev) => setReviewText(ev.target.value)}/>
+                    <input style={{width: '8%'}} placeholder='Stars' value={nrOfStars} onInput={(ev) => setNrOfStars(ev.target.value)}/>
+                    <button onClick={submitReview}> Submit </button>
                 </div>
             </div>
 

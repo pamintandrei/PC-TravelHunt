@@ -1,35 +1,12 @@
 import mssql from 'mssql';
 import { RequestHandler } from 'express';
 
-import { Todo } from '../models/todo';
-
-import fetch from 'node-fetch';
-
 import qrCode from 'qrcode';
 
 import { getConnectionPool, getRequest } from '../mssql'
 
-//exemplu TO DO controllers
-
-const TODOS: Todo[] = [];
-
-//  async function getceva(queryString:String) :Promise<Response>{
-
-// await POST bundle
-// const url='http://localhost:3000/'
-// const response = await fetch(`${url}${queryString ? '&' + queryString : ''}`, {
-//     method: 'get',
-//     headers: {
-//         'accept': 'application/json',
-//         'content-Type': 'application/json'
-//     },
-// });
-
-// return await response.json();
-//}
 
 export const createBuilding: RequestHandler = async (req, res, next) => {
-  //const text = (req.body as { text: string }).text;
   console.log(req.body)
   const create_building = await getRequest()
     .input('bld_name', mssql.VarChar, req.body.bld_name)
@@ -46,15 +23,11 @@ export const createBuilding: RequestHandler = async (req, res, next) => {
 };
 
 export const getTodos: RequestHandler = async (req, res, next) => {
-  //req.query
-  // const body = await getceva('');
-  //request catre cladiri
-  qrCode.toDataURL('SIUUUUUUUUUUUUUUUUUUUUUUUUU', { version: 10 }, function (err: any, url: any) {
+  qrCode.toDataURL('buildingUrl', { version: 10 }, function (err: any, url: any) {
     if (err) console.error(err);
     console.log(url);
     res.json(url);
   })
-  //res.status(200).send(body);
 };
 
 export const getFromDataBase: RequestHandler = async (req, res, next) => {

@@ -1,0 +1,30 @@
+.building-component{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    letter-spacing: 2px;
+    width: 700px;
+    height: fit-content;
+    border: 2px solid #73a25f;
+    background-color: white;
+    z-index:10;
+}
+
+.building-component-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.building-reviews{
+    padding: 10px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    border: 1px solid black;
+    overflow-y: scroll;
+}

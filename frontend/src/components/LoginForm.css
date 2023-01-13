@@ -1,0 +1,18 @@
+.login-container{
+    margin: 300px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    width: 20%;
+    height: 250px;
+    padding: 50px;
+    background-color: beige;
+    border: 2px solid brown;
+    border-radius: 5px;
+}
+
+.input{
+    font-size: 20px;
+    padding: 2px 1px;
+}

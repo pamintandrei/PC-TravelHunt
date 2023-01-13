@@ -2,9 +2,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100px;
-    height: 100px;
-    position: absolute
+    width: 300px;
+    height: fit-content;
+    position: absolute;
 }
 
 .building-button{
@@ -12,14 +12,57 @@
     width: 30px;
     height: 30px;
     justify-content: center;
-    background: blue; 
+    background: #b45d41;
+    border: 2px solid #5b3934;
     border-radius: 15px;
-    
 }
 
 .building-span{
     color: white;
     font-size: 20px;
-    padding: 5px 5px;
-    font-weight: bold
+    padding: 2px 5px;
+    font-weight: bold;
+    margin-bottom: 3px;
 }
+
+.building-info-container{
+    width: 250px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    z-index: 10;
+
+}
+
+.building-info{
+    cursor: pointer;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes fadeIn { 
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+

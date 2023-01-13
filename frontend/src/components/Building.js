@@ -1,24 +1,39 @@
 import './Building.css'
-import {useState} from 'react'
+import {constants} from '../utils/constants'
+import {useEffect, useState} from 'react'
+import BuildingComponent from "./BuildingComponent";
 
 export default function Building({buildingId, buildingOrder}) {
-    let random1,random2;
     const [buildingVisible, setBuildingVisible] = useState(false)
+    const [enabledBuildingComponent, setEnabledBuildingComponent] = useState(false)
 
-    useState(() => {
-        random1=Math.floor(Math.random() * 770);
-        random2=Math.floor(Math.random() * 1480); 
-    },[])
-
+    //TODO nr. 9
+    useEffect(() => {
+        // debugger;
+    }, [buildingVisible])
 
     return (
-        <div className='container' style={{top: `${random1}px`, left: `${random2}px`}}>
-            <div className='building-button'  onClick={() => setBuildingVisible(!buildingVisible)}>
-               {buildingOrder && <span className='building-span'> {buildingOrder} </span>}
+        <div className='container' style={{top: `${constants.buildingPositions[buildingId].top}px`, 
+                                            left: `${constants.buildingPositions[buildingId].left}px`}}>
+            <div className='building-button'  onClick={() => {
+                setEnabledBuildingComponent(false)
+                setBuildingVisible(!buildingVisible)
+            }}>
+                {buildingOrder && <div className='building-span'> {buildingOrder} </div>}
             </div>
             {buildingVisible && 
-                <img src={require(`../assets/images/${buildingId}.jpg`)} alt='building' width="100" height="100" style={{borderRadius: '500px', border: '3px solid black'}}/>
+                <div className='building-info-container'>
+                    <img src={require(`../assets/images/${buildingId}.jpg`)} alt='building' width="100" height="100"
+                            style={{borderRadius: '20px' }}/>
+                    <div className='building-info' onClick={() => {
+                        setBuildingVisible(!buildingVisible)
+                        setEnabledBuildingComponent(!enabledBuildingComponent)
+                    }}>
+                        {constants.buildingPositions[buildingId].name}
+                    </div>
+                </div>
             }
+            {enabledBuildingComponent && <BuildingComponent buildingId={buildingId}/>}
         </div>
     )
 } 

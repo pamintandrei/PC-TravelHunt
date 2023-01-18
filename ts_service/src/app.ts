@@ -5,7 +5,7 @@ import { loadAppConfig } from './utils/utils';
 
 const config = loadAppConfig("config.json");
 
-import routes from './routes/todos';
+import routes from './routes';
 
 const app = express();
 

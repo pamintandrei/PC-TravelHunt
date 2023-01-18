@@ -6,10 +6,6 @@ const router = Router();
 
 router.post('/Building/', createBuilding);
 
-router.get('/', getTodos);
-
-router.get('/Database/', getFromDataBase);
-
 router.patch('/Building/:id', updateBuilding);
 
 router.delete('/Building/:id', deleteBuilding);

@@ -1,11 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { json } from 'body-parser';
-import { init, getConnectionPool } from '../../src/mssql/index';
+import { init, getConnectionPool } from '../mssql/index';
 import { loadAppConfig } from '../utils/utils';
 import * as assert from "assert";
 import fetch from 'node-fetch';
 const config = loadAppConfig("test_config.json");
-import routes from '../routes/todos';
+import routes from '../routes';
 const url = "http://localhost:3000/Building/"
 
 async function postFetchBuildings(building: object){

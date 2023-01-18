@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { getFromDataBase, createBuilding, getTodos, updateBuilding, deleteBuilding, getBuilding } from '../controllers/todos';
+import { getFromDataBase, createBuilding, getTodos, updateBuilding, deleteBuilding, getBuilding } from '../controllers';
 
 const router = Router();
 

@@ -5,12 +5,13 @@ export const orderSlice = createSlice({
     initialState: {
       value: {
           array: [],
-          username: ''
+          username: '',
+          reviews: []
       },
     },
     reducers: {
-      generateRoute: (state) => {
-        state.value.array = [...Array(7).keys()]
+      setRoute: (state, array) => {
+        state.value.array = array.payload
       },
 
       resetRoute: (state) => {
@@ -18,11 +19,15 @@ export const orderSlice = createSlice({
       },
 
       setCurrentUsername: (state, username) => {
-        state.value.username = username;
+        state.value.username = username.payload;
       },
+
+      setReviews: (state, reviews) => {
+          state.value.reviews = reviews.payload
+      }
     },
   })
 
-  export const { generateRoute, resetRoute, setCurrentUsername } = orderSlice.actions
+  export const { setRoute, resetRoute, setCurrentUsername, setReviews } = orderSlice.actions
 
   export default orderSlice.reducer

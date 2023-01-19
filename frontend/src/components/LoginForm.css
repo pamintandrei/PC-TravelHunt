@@ -4,15 +4,31 @@
     flex-direction: column;
     gap: 20px;
     justify-content: center;
+    align-items: center;
     width: 20%;
-    height: 250px;
-    padding: 50px;
+    height: fit-content;
+    padding: 30px;
     background-color: beige;
-    border: 2px solid brown;
+    border: 2px solid #b75c3f;
     border-radius: 5px;
 }
 
 .input{
+    font-size: 16px;
+    padding: 2px 1px;
+}
+
+.submit-button{
     font-size: 20px;
     padding: 2px 1px;
+    width: 50%;
+    background-color: #b75c3f;
+    border: 2px solid #7e3d2b;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.submit-button:active {
+    background-color: #984d34;
+
 }

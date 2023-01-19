@@ -1,43 +1,58 @@
 import './BuildingComponent.css'
 import {constants} from '../utils/constants'
 import {useEffect, useState} from 'react'
-import { service } from '../service/service';
+import {useSelector, useDispatch} from "react-redux";
+import {routeService} from "../services/service";
+import {setReviews} from "../store_features/orderSlice";
+
+
 
 
 export default function BuildingComponent({buildingId}) {
-    const [buildingReviews, setBuildingReviews] = useState([{reviewText: 'este frumoasa', stars: 4, user: {username: 'Mihai'}},
-        {reviewText: 'nu imi place', stars: 2, user: {username: 'Andrei'}},
-        {reviewText: 'mi-a placut foarte mult ', stars: 5, user: {username: 'Ion'}},
-        {reviewText: 'nu mi-a placut deloc ', stars: 1, user: {username: 'Alexandra'}}])
-
-    const [buildingReviews2, setBuildingReviews2] = useState([{reviewText: 'review test', stars: 5, user: {username: 'Cami'}},
-        {reviewText: 'review text test 3', stars: 1.5, user: {username: 'Ionut'}}])
-
+    const [buildingReviews, setBuildingReviews] = useState(null)
     const [reviewText, setReviewText] = useState(null)
     const [nrOfStars, setNrOfStars] = useState(null)
+    const allReviews = useSelector((state) => state.order.value.reviews)
+    const dispatch = useDispatch()
+    const [qr, setQr] = useState(null);
 
     useEffect(() => {
         const init = async () => {
-            console.log(buildingId)
-            //getReviewsForBuilding(buildingId)
+            setBuildingReviews(getReviewsForBuilding(buildingId))
+            try{
+                let qr = require(`../assets/QRs/${buildingId}.jpeg`);
+                if(qr)
+                    setQr(qr)
+            }catch(e){
+                console.log(e)
+            }
         }
         init();
     }, [])
 
+    useEffect(() => {
+        setBuildingReviews(getReviewsForBuilding(buildingId))
+    }, [allReviews])
 
-
-    const getReviewsForBuilding = (buildingId) => {
-        // let response=service.get("http://127.0.0.1:8000/route?username=mihainan")
-        // var array = JSON.parse(response)
-        // setBuildingsIdsInOrder(array)
+    const getReviewsForBuilding = (id) => {
+        return allReviews.filter(review => review.buildingId === id)
     }
 
-    const submitReview = () => {
-        if(nrOfStars<= 1 || nrOfStars > 5) {
+    const submitReview = async () => {
+        if(nrOfStars < 1 || nrOfStars > 5) {
             alert("Number of stars must be between 1 and 5")
             setNrOfStars('')
         }
-        //send request to BE
+        if(!reviewText.length)
+            alert("The review text can't be empty!")
+
+        const review = await routeService.saveReview(reviewText, parseInt(nrOfStars), buildingId)
+        const newBuildingReviews = [...buildingReviews]
+        newBuildingReviews.push(review)
+        setBuildingReviews(newBuildingReviews)
+        const newReviews = [...allReviews]
+        newReviews.push(review)
+        dispatch(setReviews(newReviews))
     }
 
     return (
@@ -50,27 +65,23 @@ export default function BuildingComponent({buildingId}) {
                     {constants.buildingPositions[buildingId].description}
                 </div>
                 <div className='building-reviews'>
-                    {buildingId === 14 ? buildingReviews?.map((review) => (
+                    {buildingReviews?.map((review) => (
                         <div style={{display: 'flex', borderBottom: '2px solid red'}} >
                             <span style={{flex: '1'}}>{review.user.username}</span>
                             <span style={{flex: '1'}}> {review.stars}/5 ⭐</span>
                             <span style={{flex: '1'}}> {review.reviewText}</span>
                         </div>
-                    )) :
-                        buildingReviews2?.map((review) => (
-                            <div style={{display: 'flex', borderBottom: '2px solid red'}} >
-                                <span style={{flex: '1'}}>{review.user.username}</span>
-                                <span style={{flex: '1'}}> {review.stars}/5 ⭐</span>
-                                <span style={{flex: '1'}}> {review.reviewText}</span>
-                            </div>
-                        ))
-                    }
+
+                    ))}
                 </div>
                 <div style={{display: 'flex', gap:'10px', width: '100%', height: '5%'}}>
                     <input style={{width: '70%'}} placeholder='Write a review...' value={reviewText} onInput={(ev) => setReviewText(ev.target.value)}/>
-                    <input style={{width: '8%'}} placeholder='Stars' value={nrOfStars} onInput={(ev) => setNrOfStars(ev.target.value)}/>
-                    <button onClick={submitReview}> Submit </button>
+                    <input style={{width: '10%'}} placeholder='Stars' value={nrOfStars} onInput={(ev) => setNrOfStars(ev.target.value)}/>
+                    <button style={{width: '20%', backgroundColor: '#b75c3f', border: '2px solid #7e3d2b',
+                        borderRadius: '10px',
+                        cursor: 'pointer'}} onClick={submitReview}> Submit </button>
                 </div>
+                {qr && <img src={qr} alt='building' width="150" height="150"/>}
             </div>
 
         </div>

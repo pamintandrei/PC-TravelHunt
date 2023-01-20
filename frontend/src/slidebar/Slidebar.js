@@ -2,12 +2,14 @@ import './Slidebar.css'
 import {useDispatch, useSelector} from 'react-redux'
 import { setRoute, resetRoute } from '../store_features/orderSlice';
 import {routeService} from "../services/service";
+import { useEffect } from 'react';
 
 export default function Slidebar({setToken}) {
     const dispatch = useDispatch();
-    const username = useSelector((state) => state.order.value.username)
 
     const generate = async () => {
+        const username = window.localStorage.getItem('username')
+
         const array = await routeService.generateRoute(username);
         dispatch(setRoute(array))
     }

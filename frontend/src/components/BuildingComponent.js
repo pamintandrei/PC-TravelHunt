@@ -39,12 +39,14 @@ export default function BuildingComponent({buildingId}) {
     }
 
     const submitReview = async () => {
-        if(nrOfStars < 1 || nrOfStars > 5) {
-            alert("Number of stars must be between 1 and 5")
+        if(nrOfStars < 1 || nrOfStars > 10) {
+            alert("Number of stars must be between 1 and 10")
             setNrOfStars('')
+            return;
         }
-        if(!reviewText.length)
+        if(!reviewText.length){
             alert("The review text can't be empty!")
+            return;}
 
         const review = await routeService.saveReview(reviewText, parseInt(nrOfStars), buildingId)
         const newBuildingReviews = [...buildingReviews]
@@ -68,7 +70,7 @@ export default function BuildingComponent({buildingId}) {
                     {buildingReviews?.map((review) => (
                         <div style={{display: 'flex', borderBottom: '2px solid red'}} >
                             <span style={{flex: '1'}}>{review.user.username}</span>
-                            <span style={{flex: '1'}}> {review.stars}/5 ⭐</span>
+                            <span style={{flex: '1'}}> {review.stars}/10 ⭐</span>
                             <span style={{flex: '1'}}> {review.reviewText}</span>
                         </div>
 

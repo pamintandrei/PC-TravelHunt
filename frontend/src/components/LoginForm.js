@@ -15,6 +15,7 @@ export default function LoginForm({setToken}) {
         const login = await routeService.login(username, password);
         if(login){
             window.localStorage.setItem('token', login)
+            window.localStorage.setItem('username', username)
             setToken(login)
             dispatch(setCurrentUsername(username))
         }
